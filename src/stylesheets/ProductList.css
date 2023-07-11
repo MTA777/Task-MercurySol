@@ -1,5 +1,15 @@
-.product-list {
+ .product-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 26px;
+}
+
+.product-list p {
+    margin: 0;
+}
+
+.product-list .no-products {
+    text-align: center;
+    font-size: 16px;
+    color: #999;
 }

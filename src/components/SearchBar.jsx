@@ -1,33 +1,22 @@
-import { useState } from "react";
-import data from "./dummy.json";
+import React, { useState } from "react";
 
-const App = () => {
-  const [message, setMessage] = useState("");
+const SearchBar = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleChange = (event) => {
-    setMessage(event.target.value);
-    let x = data.filter(
-      (product) => product.productName.toLowerCase() === message.toLowerCase()
-    );
-
-    console.log("new" + x);
-    console.log("You search for:", event.target.value);
+  const handleSearch = (event) => {
+    const term = event.target.value;
+    setSearchTerm(term);
+    onSearch(term);
   };
 
   return (
-    <div>
-      <h1>Searchbar</h1>
-      <input
-        type="text"
-        id="message"
-        name="message"
-        onChange={handleChange}
-        value={message}
-      />
-
-      <h4>You search for: {message}</h4>
-    </div>
+    <input
+      type="text"
+      placeholder="Search products..."
+      value={searchTerm}
+      onChange={handleSearch}
+    />
   );
 };
 
-export default App;
+export default SearchBar;

@@ -1,31 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ProductCard from "./ProductCard";
-import data from "./dummy.json";
 import "../stylesheets/ProductList.css";
 
-const ProductList = () => {
-  const [products, setProducts] = useState([]);
+const ProductList = ({ products }) => {
+  if (products.length === 0) {
+    return <p>No products found.</p>;
+  }
+  // There is CORS Error to axios, so we are using dummy data
+  // const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    // const fetchProducts = async () => {
-    //   try {
-    //     const response = await fetch(
-    //       "https://sore-puce-butterfly-cap.cyclic.app/products"
-    //       // "https://jsonplaceholder.typicode.com/todos/1"
-    //     );
-    //     if (!response.ok) {
-    //       throw new Error("Network response was not ok");
-    //     }
-    //     const data = await response.json();
-    setProducts(data);
-    console.log(data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    // };
+  // useEffect(() => {
+  //   // const fetchProducts = async () => {
+  //   //   try {
+  //   //     const response = await fetch(
+  //   //       "https://sore-puce-butterfly-cap.cyclic.app/products"
+  //   //       // "https://jsonplaceholder.typicode.com/todos/1"
+  //   //     );
+  //   //     if (!response.ok) {
+  //   //       throw new Error("Network response was not ok");
+  //   //     }
+  //   //     const data = await response.json();
+  //   setProducts(data);
+  //   console.log(data);
+  //   // } catch (error) {
+  //   //   console.log(error);
+  //   // }
+  //   // };
 
-    // fetchProducts();
-  }, []);
+  //   // fetchProducts();
+  // }, []);
 
   return (
     <div className="product-list">
